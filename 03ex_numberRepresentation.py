@@ -340,18 +340,18 @@ def riemann(N):
         I += h * func(k/N)
     return I
 
+#Correct solution of the integral
 true = pi/2
-
-r = [riemann(10**(i)) for i in range(2,9)]
-
 print("True value:",pi/2)
 
+r = [riemann(10**(i)) for i in range(2,9)]
 for i in range(2,9):
-    print("\nRiemann value for n=", 10**(i) , ":",r[i-2])
+    print("\nRiemann value for n =", 10**(i) , ":",r[i-2])
     print("difference between calculated and expected value:", abs(true-r[i-2]))
-    %timeit riemann(10**(i))
+    print(%timeit riemann(10**(i)))
 
+print("\nIn the following case my pc exceeds 60 s of computational time:")
 r180000000 = riemann(180000000)
-print("\nRiemann value for n=", 180000000, ":",r180000000)
+print("Riemann value for n =", 180000000, ":",r180000000)
 print("difference between calculated and expected value:", abs(true-r180000000))
 %timeit riemann(180000000)
